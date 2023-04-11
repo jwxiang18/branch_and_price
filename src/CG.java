@@ -79,9 +79,7 @@ public class CG {
             }
             GRBColumn new_RLMP_col = new GRBColumn();
             for (int i = 0; i < instance.numOrders; i++) {
-                if(new_column[i] == 1){
-                    new_RLMP_col.addTerm(1,model.getConstr(i));
-                }
+                new_RLMP_col.addTerm(new_column[i],model.getConstr(i));
             }
             theta.add(model.addVar(0,1,route.distance, GRB.CONTINUOUS,new_RLMP_col,"theta"+theta.size()));
             model.update();

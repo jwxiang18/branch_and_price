@@ -9,7 +9,7 @@ public class Node implements Cloneable{
     public double obj ;
     public double [][]  edges;
     public boolean feasible , dominated , allInt ;
-    public boolean[][] isInt , isBranch;
+    public boolean[][]  isBranch;
     public Node(Instance instance){
         this.instance = instance;
 
@@ -34,19 +34,19 @@ public class Node implements Cloneable{
     private void searchEdges(){
         branchAt_i = -1;
         branchAt_j = -1;
-        isInt = new boolean[edges.length][edges.length];
+        // isInt = new boolean[edges.length][edges.length];
         allInt = true;
         double disWith01 , maxDis = 1;
         for (int i = 0; i < edges.length; i++) {
             for (int j = 0; j < edges.length; j++) {
                 if(i==j || isBranch[i][j]) {
-                    isInt[i][j] = true;
+                    // isInt[i][j] = true;
                     continue;
                 }
                 disWith01 = Math.abs(edges[i][j] - 0.5);
-                if(Math.abs(disWith01 - 0.5) < 1e-4) isInt[i][j] = true;
+                if(Math.abs(disWith01 - 0.5) < 1e-4) ;
                 else {
-                    isInt[i][j] = false;
+                    // isInt[i][j] = false;
                     allInt = false;
                     if(disWith01 < maxDis){
                         maxDis = disWith01;
@@ -85,10 +85,10 @@ public class Node implements Cloneable{
         for (int i = 0; i < newnode.isBranch.length; i++) {
             newnode.isBranch[i] = this.isBranch[i].clone();
         }
-        newnode.isInt = this.isInt.clone();
-        for (int i = 0; i < newnode.isInt.length; i++) {
-            newnode.isInt[i] = this.isInt[i].clone();
-        }
+        // newnode.isInt = this.isInt.clone();
+        // for (int i = 0; i < newnode.isInt.length; i++) {
+        //     newnode.isInt[i] = this.isInt[i].clone();
+        // }
 
         return newnode;
     }

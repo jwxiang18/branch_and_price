@@ -28,7 +28,9 @@ public class ESPPRC {
         addRoutes = new LinkedList<>();
 
         //增加停止的条件
-        while(!routes.isEmpty() && candidateRoutes.get(instance.numOrders+1).size() <200){
+        while(!routes.isEmpty()
+                && candidateRoutes.get(instance.numOrders+1).size() <200
+        ){
             searchNextPoint(routes.poll());
         }
         for(int i = 0 ; i < candidateRoutes.get(instance.numOrders+1).size() ; i++){
